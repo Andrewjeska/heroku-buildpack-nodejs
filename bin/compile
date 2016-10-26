@@ -133,6 +133,15 @@ build_dependencies() {
 header "Building dependencies"
 build_dependencies | output "$LOG_FILE"
 
+
+write_to_dist(){
+    npm run -s build
+}
+
+header "Writing to /dist"
+write_to_dist | output "$LOG_FILE"
+
+
 cache_build() {
   local cache_directories=$(get_cache_directories)
 
@@ -158,7 +167,7 @@ summarize_build() {
   (npm ls --depth=0 | tail -n +2 || true) 2>/dev/null
 }
 
-npm run -s build
+
 
 header "Build succeeded!"
 summarize_build | output "$LOG_FILE"
