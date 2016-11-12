@@ -134,12 +134,12 @@ header "Building dependencies"
 build_dependencies | output "$LOG_FILE"
 
 
-write_to_dist(){
-    npm run -s build
+run_dist(){
+    npm run dist
 }
 
-header "Writing to /dist"
-write_to_dist | output "$LOG_FILE"
+header "copying to dist"
+run_dist | output "$LOG_FILE"
 
 
 cache_build() {
